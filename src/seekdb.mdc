@@ -1,7 +1,7 @@
 ---
 description: SeekDB Development Guide and Documentation Reference
 globs: ["**/*seekdb*", "**/*.ts", "**/*.js", "**/*.py"]
-alwaysApply: false
+alwaysApply: true
 ---
 
 # SeekDB Development Rules
