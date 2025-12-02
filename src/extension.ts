@@ -102,13 +102,16 @@ function writeVersionFile(versionFilePath: string, version: string): void {
 /**
  * Remove seekdb-docs from workspace .cursor/rules directory
  * Also remove seekdb.mdc from .cursor/rules directory
+ * @param silent If true, don't show any UI messages (useful for uninstall)
  */
-async function removeSeekdbDocsFromRules() {
+async function removeSeekdbDocsFromRules(silent: boolean = false) {
     try {
         // Get workspace root directory
         const workspaceFolders = vscode.workspace.workspaceFolders;
         if (!workspaceFolders || workspaceFolders.length === 0) {
-            vscode.window.showWarningMessage('No workspace folder is open');
+            if (!silent) {
+                vscode.window.showWarningMessage('No workspace folder is open');
+            }
             return;
         }
 
@@ -134,14 +137,20 @@ async function removeSeekdbDocsFromRules() {
         }
 
         if (removedItems.length === 0) {
-            vscode.window.showInformationMessage('Seekdb documentation not found in .cursor/rules directory');
+            if (!silent) {
+                vscode.window.showInformationMessage('Seekdb documentation not found in .cursor/rules directory');
+            }
             return;
         }
 
-        vscode.window.showInformationMessage(`Seekdb documentation successfully removed: ${removedItems.join(', ')}`);
+        if (!silent) {
+            vscode.window.showInformationMessage(`Seekdb documentation successfully removed: ${removedItems.join(', ')}`);
+        }
     } catch (error) {
         const errorMessage = error instanceof Error ? error.message : String(error);
-        vscode.window.showErrorMessage(`Error removing documentation: ${errorMessage}`);
+        if (!silent) {
+            vscode.window.showErrorMessage(`Error removing documentation: ${errorMessage}`);
+        }
         console.error(`Error removing documentation: ${errorMessage}`);
     }
 }
@@ -281,7 +290,13 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(removeCommand);
 }
 
-export function deactivate() {
-    // No automatic cleanup on deactivate - user can manually remove if needed
+export async function deactivate() {
+    // Automatically cleanup seekdb-docs when extension is uninstalled
+    try {
+        await removeSeekdbDocsFromRules(true); // Silent mode for uninstall
+    } catch (error) {
+        // Silently fail during deactivation to avoid blocking uninstall
+        console.error('Error during deactivation cleanup:', error);
+    }
 }
 
