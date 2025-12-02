@@ -1,8 +1,8 @@
 {
-  "name": "seekdb-docs-for-cursor",
-  "displayName": "Seekdb Docs",
+  "name": "seekdb-for-cursor",
+  "displayName": "Seekdb",
   "description": "Add Seekdb database documentation to .cursor/rules directory, enabling Cursor AI assistant to understand Seekdb database knowledge",
-  "version": "0.1.2",
+  "version": "0.0.1",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -10,6 +10,10 @@
     "Other"
   ],
   "icon": "icon.png",
+  "icons": {
+    "light": "icon.png",
+    "dark": "icon-dark.png"
+  },
   "main": "./out/extension.js",
   "contributes": {
     "commands": [

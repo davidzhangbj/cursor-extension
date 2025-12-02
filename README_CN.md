@@ -1,5 +1,5 @@
 [English](README.md) | 简体中文
-# Seekdb Docs for Cursor
+# Seekdb Plugin for Cursor
 
 将 Seekdb 数据库文档添加到 `.cursor/rules` 目录，使 Cursor AI 助手能够理解 Seekdb 数据库知识。
 
