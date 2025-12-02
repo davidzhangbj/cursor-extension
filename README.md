@@ -1,3 +1,4 @@
+English | [简体中文](README_CN.md)  
 # Seekdb Docs for Cursor
 
 Add Seekdb database documentation to the `.cursor/rules` directory, enabling the Cursor AI assistant to understand Seekdb database knowledge.

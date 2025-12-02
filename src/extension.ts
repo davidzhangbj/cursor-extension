@@ -262,11 +262,19 @@ async function copyOfficialDocsToRules(context: vscode.ExtensionContext) {
             writeVersionFile(versionFilePath, currentVersion);
         }
         
-        vscode.window.showInformationMessage('Seekdb documentation successfully added');
         console.log(`Copied documentation from ${seekdbDocsPath} to ${seekdbDocsTargetPath}`);
         
         // Also copy seekdb.mdc to .cursor/rules directory
         await copySeekdbMdcToRules(context);
+        
+        // Prompt user to reload window to ensure rules are loaded
+        const reloadAction = await vscode.window.showInformationMessage(
+            'Seekdb documentation successfully added. Please reload the window to apply the changes.',
+            'Reload Window'
+        );
+        if (reloadAction === 'Reload Window') {
+            vscode.commands.executeCommand('workbench.action.reloadWindow');
+        }
     } catch (error) {
         const errorMessage = error instanceof Error ? error.message : String(error);
         vscode.window.showErrorMessage(`Error copying documentation: ${errorMessage}`);
@@ -291,12 +299,9 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export async function deactivate() {
-    // Automatically cleanup seekdb-docs when extension is uninstalled
-    try {
-        await removeSeekdbDocsFromRules(true); // Silent mode for uninstall
-    } catch (error) {
-        // Silently fail during deactivation to avoid blocking uninstall
-        console.error('Error during deactivation cleanup:', error);
-    }
+    // Note: We don't automatically cleanup files here because:
+    // 1. deactivate() is called on window reload, which would incorrectly delete files
+    // 2. Extension uninstall may not call deactivate()
+    // Users can manually remove files using the 'seekdb-docs.removeFromRules' command if needed
 }
 
