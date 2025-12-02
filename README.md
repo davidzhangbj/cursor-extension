@@ -19,7 +19,7 @@ Add Seekdb database documentation to the `.cursor/rules` directory, enabling the
 
 2. Type and select the command:
    - Type "Seekdb Docs" or "Add Seekdb Docs"
-   - Select the `Add Seekdb Docs to .cursor/rules` command
+   - Select the `Add Seekdb Docs` command
 
 3. The documentation will be automatically added to:
    - `.cursor/rules/seekdb-docs` directory (official documentation)
@@ -31,7 +31,7 @@ Add Seekdb database documentation to the `.cursor/rules` directory, enabling the
 
 2. Type and select the command:
    - Type "Remove Seekdb Docs"
-   - Select the `Remove Seekdb Docs from .cursor/rules` command
+   - Select the `Remove Seekdb Docs` command
 
 3. The documentation will be removed from:
    - `.cursor/rules/seekdb-docs` directory

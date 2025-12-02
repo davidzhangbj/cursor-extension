@@ -19,7 +19,7 @@
 
 2. 输入并选择命令：
    - 输入 "Seekdb Docs" 或 "Add Seekdb Docs"
-   - 选择 `Add Seekdb Docs to .cursor/rules` 命令
+   - 选择 `Add Seekdb Docs` 命令
 
 3. 文档将自动添加到：
    - `.cursor/rules/seekdb-docs` 目录（官方文档）
@@ -31,7 +31,7 @@
 
 2. 输入并选择命令：
    - 输入 "Remove Seekdb Docs"
-   - 选择 `Remove Seekdb Docs from .cursor/rules` 命令
+   - 选择 `Remove Seekdb Docs` 命令
 
 3. 文档将从以下位置移除：
    - `.cursor/rules/seekdb-docs` 目录
