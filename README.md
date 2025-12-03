@@ -1,11 +1,11 @@
 English | [简体中文](README_CN.md)  
 # Seekdb Plugin for Cursor
 
-Add Seekdb database documentation to the `.cursor/rules` directory, enabling the Cursor AI assistant to understand Seekdb database knowledge.
+Add seekdb database documentation to the `.cursor/rules` directory, enabling the Cursor AI assistant to understand Seekdb database knowledge.
 
 ## Features
 
-- Copy Seekdb official documentation to the `.cursor/rules/seekdb-docs` directory in the current workspace
+- Copy seekdb official documentation to the `.cursor/rules/seekdb-docs` directory in the current workspace
 - Copy `seekdb.mdc` rule file to the `.cursor/rules` directory in the current workspace
 - Support version management, only re-copy when documentation version is updated
 - Support manual removal of copied documentation (removes both `.cursor/rules/seekdb-docs` and `.cursor/rules/seekdb.mdc`)
